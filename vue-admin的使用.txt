@@ -1,0 +1,58 @@
+1.在src->router->index.js  用于页面路由添加与修改  根据需求修改如下代码即可
+{
+    path: '/example',   //一级页面显示的名称
+    component: Layout,
+    redirect: '/example/table',  //重定向到那个页面
+    name: 'Example',
+    meta: { title: 'Example', icon: 'example' },  //描述与图标
+    children: [
+      {
+        path: 'table',   //一级页面下的子目录
+        name: 'Table',  //二级页面名称
+        component: () => import('@/views/table/index'),
+        meta: { title: 'Table', icon: 'table' }
+      },
+      {
+        path: 'tree',   //一级页面下的子目录
+        name: 'Tree',  //二级页面名称
+        component: () => import('@/views/tree/index'),
+        meta: { title: 'Tree', icon: 'tree' }
+      }
+    ]
+  },
+
+
+2.在src->views->创建对应的文件夹(example)  再文件夹下创建(table).vue文件和(tree).vue  括号内容根据需求修改
+
+3.修改路径component: () => import('@/views/tree/index'),
+
+4.src->api->创建.js文件  根据后端修改路径和请求方式
+
+5.修改.vue文件  
+<script>
+import sta from '@/api/edu/sta'
+export default {
+    data(){
+        return{
+          day:'' //初始值定义
+        }
+    },
+    created(){
+   
+    },
+    methods:{
+   create(){
+      sta.createStaData(this.day)
+       .then(response=>{
+           //提示信息
+           this.$message({
+               type:'success',
+               message:'查询成功！'
+           })
+           //跳转到图标显示页面
+           this.$router.push({path:'/sta/show'})
+       })
+     }
+    }
+}
+</script>

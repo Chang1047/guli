@@ -1,0 +1,5 @@
+在VODUploadDemo-java-1.4.11目录下 确保有aliyun-java-vod-upload-1.4.11.jar
+打开cmd
+
+安装到maven
+mvn install:install-file -DgroupId=com.aliyun -DartifactId=aliyun-sdk-vod-upload -Dversion=1.4.11 -Dpackaging=jar -Dfile=aliyun-java-vod-upload-1.4.11.jar

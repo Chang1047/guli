@@ -1,0 +1,4 @@
+Request method 'POST' not supported   
+
+在方法参数中含有@RequestBody注解时，需使用@PostMapping注解
+	
